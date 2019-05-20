@@ -12,7 +12,7 @@
     <!-- <button id="rzp-button1">Pay</button> -->
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script>
-        document.addEventListener("message", function (data) {
+        window.addEventListener("message", function (data) {
             alert(data.data);
         });
     </script>
