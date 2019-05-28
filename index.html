@@ -11,7 +11,22 @@
 <body>
     <!-- <button id="rzp-button1">Pay</button> -->
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        const patchPostMessageFunction = function () {
+            var originalPostMessage = window.postMessage;
 
+            var patchedPostMessage = function (message, targetOrigin, transfer) {
+                originalPostMessage(message, targetOrigin, transfer);
+            };
+
+            patchedPostMessage.toString = function () {
+                return String(Object.hasOwnProperty).replace('hasOwnProperty', 'postMessage');
+            };
+
+            window.postMessage = patchedPostMessage;
+        };
+        const patchPostMessageJsCode = '(' + String(patchPostMessageFunction) + ')();';
+    </script>
 </body>
 
 </html>
