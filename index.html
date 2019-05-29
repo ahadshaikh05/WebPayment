@@ -11,6 +11,26 @@
 <body>
     <!-- <button id="rzp-button1">Pay</button> -->
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        let options = {
+            "key": "rzp_test_wVCNFh5g1mZLBX", //secret key: EfN47sBo7K3GEgCqTD3h9nMk
+            "amount": '100000', /// The amount is shown in currency subunits. Actual amount is ₹599.
+            "name": "Hawk",
+            //"order_id": "12345678", // Pass the order ID if you are using Razorpay Orders.
+            "currency": "INR", // Optional. Same as the Order currency
+            "description": "Tickets for Tito's",
+            "image": "/your_logo.png",
+            "handler": function (response) {
+                alert(response.razorpay_payment_id)
+            },
+
+            "theme": {
+                "color": "#0092a6"
+            }
+        };
+        let rzp1 = new Razorpay(options);
+        let res = rzp1.open();
+    </script>
 </body>
 
 </html>
